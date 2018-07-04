@@ -1,8 +1,8 @@
 <template>
     <yd-cell-group>
-      <yd-button @click.native="show1 = true" size="large">{{ping ? ping.label : '选择平台号'}}</yd-button>
-
+        <yd-button @click.native="show1 = true" size="large">{{ping ? ping.value : '选择平台号'}}</yd-button>
         <yd-actionsheet :items="myItems1" v-model="show1" cancel="取消"></yd-actionsheet>
+
         <yd-cell-item >
           <span slot="left">这里是一个A链接</span>
           <span slot="right" @click="show1 = true">{{ping ? ping.label : '选择平台号'}}</span>
@@ -57,6 +57,7 @@
         data() {
             return {
                 ping: '',
+                input1: '',
                 datetime1: '05:21',
                 datetime2: '03-29',
                 datetime3: '2016-06',
@@ -77,16 +78,15 @@
                 myItems1: [
                     {
                         label: '拍照',
+                        value: "001",
                         callback: (label) => {
                             this.ping = label
+                            /* 注意： callback: function() {} 和 callback() {}  这样是无法正常使用当前this的 */
                         }
-                        // callback: (label) => {
-                        //     this.ping = label.label
-                        //     /* 注意： callback: function() {} 和 callback() {}  这样是无法正常使用当前this的 */
-                        // }
                     },
                     {
                         label: '从相册中偷取',
+                        value: "002",
                         callback: (label) => {
                             this.ping = label
                         }
@@ -95,7 +95,9 @@
             }
         },
         methods: {
-
+          // callback: (label) => {
+          //     this.ping = label
+          // }
         }
     }
 </script>
