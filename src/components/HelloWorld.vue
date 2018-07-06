@@ -1,4 +1,10 @@
 <template>
+  <yd-layout>
+    <yd-navbar slot="navbar" title="NavBar">
+        <router-link to="#" slot="left">
+            <yd-navbar-back-icon></yd-navbar-back-icon>
+        </router-link>
+    </yd-navbar>
     <yd-cell-group>
         <yd-button @click.native="show1 = true" size="large">{{ping ? ping.value : '选择平台号'}}</yd-button>
         <yd-actionsheet :items="myItems1" v-model="show1" cancel="取消"></yd-actionsheet>
@@ -50,6 +56,7 @@
             <yd-datetime v-model="datetime6" :hourFormat="hourFormat" start-hour="1" end-hour="2" :minute-format="monthFormat" :month-format="monthFormat" :day-format="dayFormat" type="time" slot="right"></yd-datetime>
         </yd-cell-item>
     </yd-cell-group>
+  <yd-layout>
 </template>
 
 <script type="text/babel">
